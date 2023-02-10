@@ -1,4 +1,4 @@
-# spotify_find_beats 
+# Spotify Find Beats 
 This is a library that allows user to find songs given a certain beat. 
 
 ![Hex.pm](https://img.shields.io/hexpm/l/apa?style=plastic)
