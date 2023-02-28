@@ -1,4 +1,4 @@
-# SpotifyHelpers 
+# SpotifyPictureHelper
 This is a library of spotify helper functions that allows users to find songs given a beat and understand more about an artist. 
 
 ![Hex.pm](https://img.shields.io/hexpm/l/apa?style=plastic)
