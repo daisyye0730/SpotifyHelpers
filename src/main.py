@@ -3,12 +3,15 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import json 
 import requests
 from bs4 import BeautifulSoup
-import math
 
 '''This is the function that gets the cover picture of a user'''
 '''Input is a user playlist main page'''
 def process_user_profile_pic(html):
+    if "https://open.spotify.com/user/" not in html:
+        raise Exception("Invalid HTML, please make sure the link starts with https://open.spotify.com/user/")
     page = requests.get(html)
+    if page.status_code != 200: 
+        raise Exception("Invalid server response " + page.status_code)
     soup = BeautifulSoup(page.content, "html.parser")
     # find the img tag with the user's profile picture 
     res = soup.findAll('img', {"data-testid": "user-entity-image"})
@@ -22,11 +25,18 @@ def process_user_profile_pic(html):
     if pic.status_code == 200:
         with open(f"../assets/img/{username}.jpg", 'wb') as f:
             f.write(pic.content)
+    else: 
+        raise Exception("Failed to fetch picture")
+    return username
 
 '''This is the function that gets all the public playlist album cover pictures of a user'''
 '''Input is a user playlist main page'''
 def get_public_playlists_albums(html):
+    if "https://open.spotify.com/user/" not in html:
+        raise Exception("Invalid HTML, please make sure the link starts with https://open.spotify.com/user/")
     page = requests.get(html)
+    if page.status_code != 200: 
+        raise Exception("Invalid server response " + page.status_code)
     soup = BeautifulSoup(page.content, "html.parser")
     # find the img tag with the user's profile picture 
     res = soup.findAll('img')[1:]
@@ -42,14 +52,17 @@ def get_public_playlists_albums(html):
         if pic.status_code == 200:
             with open(f"../assets/img/{username}_playlist_{i}.jpg", 'wb') as f:
                 f.write(pic.content)
+    return (username, len(res))
             
 '''This is the function to get individual pictures from a mosaic album cover'''
 '''Input is a link of the mosaic image'''
 def get_individual_album_covers_from_mosaic(link):
     # For example: "https://mosaic.scdn.co/300/ab67616d00001e022a6ab83ec179747bc3b190dcab67616d00001e02335534788cbc39cfd23ee993ab67616d00001e02d6df3bccf3ec41ea2f76debcab67616d00001e02f0855ff71aa79ab842164fc6"
+    if "https://mosaic.scdn.co/" not in link:
+        raise Exception("Invalid mosaic link, please make sure the link starts with https://mosaic.scdn.co/300/")
     split_link = link.split('/')
-    if split_link[2] != "mosaic.scdn.co":
-        raise Exception("Sorry the image is not a mosaic")
+    if len(split_link) != 5:
+        raise Exception("Depracated mosaic link, please try a new link")
     imgs = split_link[-1]
     if len(imgs) != 160:
         return Exception("Sorry this link cannot be broken down")
@@ -59,12 +72,17 @@ def get_individual_album_covers_from_mosaic(link):
         if pic.status_code == 200:
             with open(f"../assets/img/mosaic_{i}.jpg", 'wb') as f:
                 f.write(pic.content)
+    return imgs
                 
 
 '''This is the function that gets the cover picture of a playlist'''
 '''input is a playlist html'''
 def get_playlist_profile_pic(html):
+    if "https://open.spotify.com/playlist/" not in html:
+        raise Exception("Invalid mosaic link, please make sure the link starts with https://open.spotify.com/playlist/")
     page = requests.get(html)
+    if page.status_code != 200: 
+        raise Exception("Invalid server response " + page.status_code)
     soup = BeautifulSoup(page.content, "html.parser")
     res = soup.findAll('img')[0]
     # find playlist name 
@@ -74,12 +92,17 @@ def get_playlist_profile_pic(html):
     if pic.status_code == 200:
         with open(f"../assets/img/{playlist_name}_profile.jpg", 'wb') as f:
             f.write(pic.content)
+    return playlist_name
 
 '''This is the function that gets the album covers on spotify given an artist'''
 '''Input is first page of an artist'''
 def process_artist_album(html):
+    if "https://open.spotify.com/artist/" not in html:
+        raise Exception("Invalid mosaic link, please make sure the link starts with https://open.spotify.com/artist/")
     # Open the Spotify source code file
     page = requests.get(html)
+    if page.status_code != 200: 
+        raise Exception("Invalid server response " + page.status_code)
     soup = BeautifulSoup(page.content, "html.parser")
 
     # Find the h2 tag with text of Albums
