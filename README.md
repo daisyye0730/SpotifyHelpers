@@ -3,6 +3,7 @@ This is a library of spotify helper functions that allows users to find songs gi
 
 ![Hex.pm](https://img.shields.io/hexpm/l/apa?style=plastic)
 ![Hex.pm](https://img.shields.io/github/issues/daisyye0730/spotify_find_beats)
+![Hex.pm](https://img.shields.io/circleci/build/github/daisyye0730/SpotifyPictureHelper)
 
 # Overview
 Some tasks that it performs include:
@@ -16,3 +17,13 @@ Some tasks that it performs include:
 4. get_playlist_profile_pic: extracts the profile picture from a playlist 
 
 5. process_artist_album: extracts all the album covers of an artist 
+
+## Details
+The following are commands included in the Makefile:
+- `make develop`: install the library's dependencies using `pip`
+- `make build`: build the library using `setuptools`
+- `make lint`: perform static analysis of this library with `black` and `flake8`
+- `make format`: autoformat this library with `black`
+- `make test`: run automated tests with `pytest`
+- `make coverage`: run automated tests with `pytest` and collect coverage information (passes with coverage >50%)
+- `make clean`: cleans the repo
