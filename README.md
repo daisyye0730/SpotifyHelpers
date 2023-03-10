@@ -4,7 +4,6 @@ This is a library of spotify helper functions that allows users to find songs gi
 ![Hex.pm](https://img.shields.io/hexpm/l/apa?style=plastic)
 ![Hex.pm](https://img.shields.io/github/issues/daisyye0730/spotify_find_beats)
 [![Package Status](https://img.shields.io/github/actions/workflow/status/daisyye0730/spotify_find_beats/build.yml)](https://github.com/daisyye0730/spotify_find_beats/)
-[![codecov](https://codecov.io/gh/daisyye0730/spotify_find_beats/branch/main/graph/badge.svg?token=OTGOR2M0CY)](https://codecov.io/gh/daisyye0730/spotify_find_beats) 
 
 # Overview
 Some tasks that it performs include:
