@@ -6,7 +6,6 @@ This is a library of spotify helper functions that allows users to find songs gi
 [![Package Status](https://img.shields.io/github/actions/workflow/status/daisyye0730/spotify_find_beats/build.yml)](https://github.com/daisyye0730/spotify_find_beats/)
 [![codecov](https://codecov.io/gh/daisyye0730/SpotifyPictureHelper/branch/main/graph/badge.svg)](https://codecov.io/gh/daisyye0730/SpotifyPictureHelper)
 
-
 # Overview
 Some tasks that it performs include:
 
