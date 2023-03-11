@@ -46,7 +46,7 @@ jobs:
           make lint
       - name: Test
         run: |
-          make test
+          make coverage
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
@@ -57,4 +57,3 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{secrets.CODECOV_TOKEN}}
-          path: python_junit.xml
