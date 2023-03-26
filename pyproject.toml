@@ -32,7 +32,7 @@ classifiers = [
 [project.license]
 file = "LICENSE"
 
-[project.urls]
+[project.url]
 repository = "https://github.com/daisyye0730/SpotifyPictureHelper"
 
 [project.optional-dependencies]
