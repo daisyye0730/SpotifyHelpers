@@ -28,8 +28,6 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 
-[project.name]
-name = "SpotifyPictureHelper"
 
 [project.license]
 file = "LICENSE"
