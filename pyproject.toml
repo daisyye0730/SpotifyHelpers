@@ -11,7 +11,7 @@ name = "SpotifyPictureHelper"
 authors = [{name = "Daisy Ye", email = "daisyye20010730@gmail.com"}]
 description="A python library that helps with the analysis of Spotify pictures."
 readme = "README.md"
-version = "0.0.1"
+version = "0.1.0"
 requires-python = ">=3.7"
 
 dependencies = ['requests','bs4']

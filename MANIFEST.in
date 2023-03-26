@@ -1,4 +1,4 @@
-graft example_project_python
+graft SpotifyPictureHelper
 
 include LICENSE
 include README.md
