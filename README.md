@@ -5,6 +5,7 @@ This is a library of helper functions that allows users to process images in Spo
 ![Hex.pm](https://img.shields.io/github/issues/daisyye0730/spotify_find_beats)
 [![Package Status](https://img.shields.io/github/actions/workflow/status/daisyye0730/spotify_find_beats/build.yml)](https://github.com/daisyye0730/spotify_find_beats/)
 [![codecov](https://codecov.io/gh/daisyye0730/SpotifyPictureHelper/branch/main/graph/badge.svg)](https://codecov.io/gh/daisyye0730/SpotifyPictureHelper)
+[![PyPI](https://img.shields.io/pypi/v/SpotifyPictureHelper)](https://pypi.org/project/SpotifyPictureHelper/)
 
 ## Overview
 Some tasks that it performs include:
