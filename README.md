@@ -1,4 +1,4 @@
-# SpotifyPictureHelper
+# SpotifyPictureHelper [![docs](https://img.shields.io/badge/-docs-black?style=flat-square)](https://daisyye0730.github.io/SpotifyPictureHelper/docs/_build/html/index.html) 
 This is a library of helper functions that allows users to process images in Spotify. 
 
 ![Hex.pm](https://img.shields.io/hexpm/l/apa?style=plastic)
