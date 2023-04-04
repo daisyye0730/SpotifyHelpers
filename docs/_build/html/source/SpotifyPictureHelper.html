@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpotifyPictureHelper package &mdash; SpotifyPictureHelper 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SpotifyPictureHelper
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SpotifyPictureHelper package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-SpotifyPictureHelper.main">SpotifyPictureHelper.main module</a></li>
+<li><a class="reference internal" href="#module-SpotifyPictureHelper">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SpotifyPictureHelper</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SpotifyPictureHelper package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/SpotifyPictureHelper.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spotifypicturehelper-package">
+<h1>SpotifyPictureHelper package<a class="headerlink" href="#spotifypicturehelper-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-SpotifyPictureHelper.main">
+<span id="spotifypicturehelper-main-module"></span><h2>SpotifyPictureHelper.main module<a class="headerlink" href="#module-SpotifyPictureHelper.main" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="main.make_request">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">make_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">html</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.make_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a request given an html</p>
+<p>Takes an html string and make a request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>html</strong> (<em>string</em>) – html string</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>requests.Response object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-0"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.get_soup">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">get_soup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.get_soup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a html request to be parsed</p>
+<p>Get a request object parsed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>requests.Response object</em>) – takes the return value of make_request</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Beautiful Soup Object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-1"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.process_user_profile_pic">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">process_user_profile_pic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">soup</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bs4.BeautifulSoup</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.process_user_profile_pic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the user profile picture given its soup</p>
+<p>Finds and saves the user profile picture locally.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>soup</strong> (<em>Beautiful Soup object</em>) – the beautiful soup object to be analyzed</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>returns the username of the profile and the link to access the image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-2"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.get_public_playlists_albums">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">get_public_playlists_albums</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">soup</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bs4.BeautifulSoup</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.get_public_playlists_albums" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches and saves the public playlist album pictures</p>
+<p>Given a user’s profile’s soup, fetches and saves all the album pictures of the public playlists the user has.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>soup</strong> (<em>BeautifulSoup object</em>) – return value of get_soup</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>returns username and the number of public playlists found</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-3"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.get_individual_album_covers_from_mosaic">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">get_individual_album_covers_from_mosaic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">link</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.get_individual_album_covers_from_mosaic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take one mosaic album cover and save four individual covers from it</p>
+<p>This is the function to get individual pictures from a mosaic album cover</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>link</strong> (<em>string</em>) – The link of the mosaic album picture</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of individual album picture links</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-4"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.get_playlist_profile_pic">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">get_playlist_profile_pic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">soup</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.get_playlist_profile_pic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches and saves the cover picture of a playlist</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>soup</strong> (<em>BeautifulSoup object</em>) – return value of get_soup</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the name of the playlist and the link of the image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-5"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.process_artist_album">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">process_artist_album</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">soup</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bs4.BeautifulSoup</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.process_artist_album" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets and saves the album covers given an artist</p>
+<p>Given the soup of the artist page, fetches all the album covers on that page and saves them locally.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>soup</strong> (<em>BeautifulSoup object</em>) – Return value of get_soup</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of dictionaries, each dictionary contains the albumName, albumLink, albumImageUrl, and albumSlug</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-SpotifyPictureHelper">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-SpotifyPictureHelper" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Daisy Ye.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

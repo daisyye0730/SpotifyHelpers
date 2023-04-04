@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 
 def make_request(html):
     """Makes a request given an html
+    
+    Takes an html string and make a request. 
 
     Args:
         html (string): html string 
@@ -17,6 +19,8 @@ def make_request(html):
 
 def get_soup(request):
     """Takes a html request to be parsed 
+    
+    Get a request object parsed 
 
     Args:
         request (requests.Response object): takes the return value of make_request
