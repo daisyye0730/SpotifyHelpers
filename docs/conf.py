@@ -10,14 +10,6 @@ def setup(app):
     }, True)
     app.add_transform(AutoStructify)
 
-# Configuration file for the Sphinx documentation builder.
-#
-# For the full list of built-in configuration values, see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
-
-# -- Project information -----------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
-
 project = 'SpotifyPictureHelper'
 copyright = '2023, Daisy Ye'
 author = 'Daisy Ye'
