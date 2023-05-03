@@ -26,6 +26,16 @@ Some tasks that it performs include:
 
 7. get_soup: accepts the return object from make_request and parses into content acceptable in tasks 1-5
 
+8. filter_all_other_color: gets rid of all the color (BGR) that is not within a certain range and save those that are 
+
+9. filter_this_color: filters the color (BGR) within a specific range and save those that aren't 
+
+10. smooth_img: smoothes and blurs the image. Without the parameter threshold, it will default to (5, 5)
+
+11. return_most_common_color: returns the most common color (BGR) and its count in a picture 
+
+12. overlay_two_images: overlays two images with the same size on top of each other. Can change the weight of each image. 
+
 ## How to Install  
 pip install SpotifyPictureHelper
 
@@ -48,3 +58,13 @@ NOTE: the length of the mosaic image link has to be 160, because each individual
 5. get_playlist_profile_pic(get_soup(make_request('https://open.spotify.com/playlist/6snlZhdBpJK0cxYURvqhFU?si=8e7eb1f3db5f438b&nd=1'))) will return the profile pic of this playlist
 
 6. process_artist_album(get_soup(make_request('https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02'))) will return all the artist albums on the artist page.
+
+7. filter_all_other_color("SpotifyPictureHelper/tests/test2.png", (0, 0, 0), (25, 25, 25)) leaves the image with pixels that fall between (0, 0, 0) and (25, 25, 25)
+
+8. filter_this_color("SpotifyPictureHelper/tests/test2.png", (0, 0, 0), (25, 25, 25)) filters all pixels that fall between (0, 0, 0) and (25, 25, 25)
+
+9. smooth_img("SpotifyPictureHelper/tests/test2.png") will smooth the image with the kernel size (5,5)
+
+10. return_most_common_color("SpotifyPictureHelper/tests/test2.png") will return the most common color in this image file 
+
+11. overlay_two_images("SpotifyPictureHelper/tests/test2.png", "SpotifyPictureHelper/tests/blackWhite.png", 0.5, 0.5) will return a blended image with the first image weighing 50% and the second image weighing also 50%
