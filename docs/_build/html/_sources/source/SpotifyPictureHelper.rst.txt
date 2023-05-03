@@ -28,6 +28,21 @@ SpotifyPictureHelper.main module
 .. automodule:: SpotifyPictureHelper.main
 .. autofunction:: main.process_artist_album
 
+.. automodule:: SpotifyPictureHelper.main
+.. autofunction:: main.filter_all_other_color
+
+.. automodule:: SpotifyPictureHelper.main
+.. autofunction:: main.filter_this_color
+
+.. automodule:: SpotifyPictureHelper.main
+.. autofunction:: main.smooth_img
+
+.. automodule:: SpotifyPictureHelper.main
+.. autofunction:: main.return_most_common_color
+
+.. automodule:: SpotifyPictureHelper.main
+.. autofunction:: main.overlay_two_images
+
 Module contents
 ---------------
 

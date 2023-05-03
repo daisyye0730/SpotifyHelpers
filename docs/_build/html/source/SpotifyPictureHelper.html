@@ -199,6 +199,112 @@
 </dl>
 </dd></dl>
 
+<span class="target" id="module-6"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.filter_all_other_color">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">filter_all_other_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_low</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_high</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.filter_all_other_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new image that only contains color within a certain range</p>
+<p>Given the path to an image and the range of color that needs to be saved, will return a new image with the pixels only within the range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_to_img</strong> (<em>string</em>) – the path to the image</p></li>
+<li><p><strong>threshold_low</strong> (<em>tuple</em>) – the low BGR threshold</p></li>
+<li><p><strong>threshold_high</strong> (<em>tuple</em>) – the upper-end of the BGR threshold</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the image in pixel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-7"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.filter_this_color">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">filter_this_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_low</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_high</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.filter_this_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new image that contains all colors except the color within a certain range</p>
+<p>Given the path to an image and the range of color that does not need, will return a new image with the pixels outside of the range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_to_img</strong> (<em>string</em>) – the path to the image</p></li>
+<li><p><strong>threshold_low</strong> (<em>tuple</em>) – the low BGR threshold</p></li>
+<li><p><strong>threshold_high</strong> (<em>tuple</em>) – the upper-end of the BGR threshold</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the image in pixel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-8"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.smooth_img">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">smooth_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5,</span> <span class="pre">5)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.smooth_img" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new image that is blurred</p>
+<p>Given the path to an image and optional parameter that blurs the image by a certain degree, the function returns a function that is blurred</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_to_img</strong> (<em>string</em>) – the path to the image</p></li>
+<li><p><strong>threshold</strong> – the optional parameter that determines the kernel size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the image in pixel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-9"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.return_most_common_color">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">return_most_common_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_img</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.return_most_common_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the most common color in the image</p>
+<p>Given the path to an image, returns the most common color in the image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path_to_img</strong> (<em>string</em>) – the path to the image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the BGR value of that color and its count</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-10"></span><dl class="py function">
+<dt class="sig sig-object py" id="main.overlay_two_images">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">overlay_two_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_img1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_to_img2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.overlay_two_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the overlay of two images</p>
+<p>Given the paths to two images and how much each image should weight in the final image, returns their overlay.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_to_img1</strong> (<em>string</em>) – the path to the first image</p></li>
+<li><p><strong>path_to_img2</strong> (<em>string</em>) – the path to the second image</p></li>
+<li><p><strong>weight1</strong> (<em>double</em>) – how much the first image should weigh from 0 to 1</p></li>
+<li><p><strong>weight2</strong> (<em>double</em>) – how much the second image should weigh from 0 to 1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the blended image in pixel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-SpotifyPictureHelper">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-SpotifyPictureHelper" title="Permalink to this headline">¶</a></h2>
