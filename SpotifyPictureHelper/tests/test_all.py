@@ -3,6 +3,8 @@ from unittest.mock import MagicMock, patch
 from bs4 import BeautifulSoup
 import os
 import pytest
+import cv2
+import numpy as np
 
 
 class TestSpotifyHelper:
@@ -77,3 +79,83 @@ class TestSpotifyHelper:
             'albumImageUrl': 'https://i.scdn.co/image/ab67616d00001e02e0b60c608586d88252b8fbc0',
             'albumSlug': 'midnights-(3am-edition)',
         }
+
+    def test_filter_all_other_color(self):
+        fake_path_to_img = "SpotifyPictureHelper/tests/blackWhite.png"
+        fake_threshold_low = (0, 0, 0)
+        fake_threshold_high = (30, 30, 30)
+        new_img = spotify.filter_all_other_color(fake_path_to_img, fake_threshold_low, fake_threshold_high)
+        count = len(new_img) * len(new_img[0])
+        c = 0
+        for i in range(0, len(new_img)):
+            for j in range(0, len(new_img[0])):
+                pix = new_img[i][j]
+                if pix.all() == 255:
+                    continue
+                c += 1
+        assert count == c
+
+    def test_filter_all_other_color_with_no_valid_path(self):
+        fake_path_to_img = "xxx/blackWhite.png"
+        with pytest.raises(Exception):
+            spotify.filter_all_other_color(fake_path_to_img, (0, 0, 0), (30, 30, 30))
+
+    def test_filter_this_color(self):
+        fake_path_to_img = "SpotifyPictureHelper/tests/blackWhite.png"
+        fake_threshold_low = (200, 200, 200)
+        fake_threshold_high = (255, 255, 255)
+        new_img = spotify.filter_this_color(fake_path_to_img, fake_threshold_low, fake_threshold_high)
+        count = len(new_img) * len(new_img[0])
+        c = 0
+        for i in range(0, len(new_img)):
+            for j in range(0, len(new_img[0])):
+                pix = new_img[i][j]
+                if pix.all() == 255:
+                    continue
+                c += 1
+        assert count == c
+
+    def test_filter_this_color_with_no_valid_path(self):
+        fake_path_to_img = "xxx/blackWhite.png"
+        with pytest.raises(Exception):
+            spotify.filter_this_color(fake_path_to_img, (0, 0, 0), (30, 30, 30))
+
+    def test_smooth_img(self):
+        fake_path_to_img = "SpotifyPictureHelper/tests/blackWhite.png"
+        img = cv2.imread(fake_path_to_img)
+        assert spotify.smooth_img(fake_path_to_img).all() == cv2.blur(img, (5, 5)).all()
+
+    def test_smooth_img_with_no_valid_path(self):
+        fake_path_to_img = "xxx/blackWhite.png"
+        with pytest.raises(Exception):
+            spotify.smooth_img(fake_path_to_img)
+
+    def test_return_most_common_color(self):
+        fake_path = "SpotifyPictureHelper/tests/test2.png"
+        result = spotify.return_most_common_color(fake_path)
+        assert result[0] == (255, 255, 255)
+
+    def test_return_most_common_color_with_no_valid_path(self):
+        fake_path_to_img = "xxx/blackWhite.png"
+        with pytest.raises(Exception):
+            spotify.return_most_common_color(fake_path_to_img)
+
+    def test_overlay_two_images(self):
+        fake_path_to_img1 = "SpotifyPictureHelper/tests/test2.png"
+        img1 = cv2.imread(fake_path_to_img1)
+        new_img = np.zeros(img1.shape[:2])
+        cv2.imwrite("SpotifyPictureHelper/tests/overlay.png", new_img)
+        img = spotify.overlay_two_images(fake_path_to_img1, "SpotifyPictureHelper/tests/overlay.png", 0.5, 0.5)
+        count = 0
+        for i in range(0, len(img)):
+            for j in range(0, len(img[0])):
+                pix = img[i][j]
+                if pix.all() != 255:
+                    count += 1
+        assert count == img1.shape[0] * img1.shape[1]
+
+    def test_overlay_two_images_with_two_different_sizes(self):
+        fake_path_to_img1 = "SpotifyPictureHelper/tests/test2.png"
+        fake_path_to_img2 = "SpotifyPictureHelper/tests/blackWhite.png"
+        with pytest.raises(Exception):
+            spotify.overlay_two_images(fake_path_to_img1, fake_path_to_img2, 1, 0)
