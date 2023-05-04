@@ -34,7 +34,7 @@ def get_soup(request):
     return BeautifulSoup(request.content, "html.parser")
 
 
-def process_user_profile_pic(soup: BeautifulSoup):
+def process_user_profile_pic(soup: BeautifulSoup, img_path=None):
     """Finds the user profile picture given its soup
 
     Finds and saves the user profile picture locally.
@@ -56,14 +56,15 @@ def process_user_profile_pic(soup: BeautifulSoup):
     title = head.find("title")
     username = title.text.split(" ")[0]
     if pic.status_code == 200:
-        with open(f"./images/{username}.jpg", "wb") as f:
+        path = img_path if img_path else f"./images/{username}.jpg"
+        with open(path, "wb") as f:
             f.write(pic.content)
     else:
         raise Exception("Failed to fetch picture")
     return (username, src)
 
 
-def get_public_playlists_albums(soup: BeautifulSoup):
+def get_public_playlists_albums(soup: BeautifulSoup, img_path=None):
     """Fetches and saves the public playlist album pictures
 
     Given a user's profile's soup, fetches and saves all the album pictures of the public playlists the user has.
@@ -84,12 +85,13 @@ def get_public_playlists_albums(soup: BeautifulSoup):
         src = ele.get("src")
         pic = make_request(f"{src}")
         if pic.status_code == 200:
-            with open(f"./images/{username}_playlist_{i}.jpg", "wb") as f:
+            path = img_path if img_path else f"./images/{username}_playlist_{i}.jpg"
+            with open(path, "wb") as f:
                 f.write(pic.content)
     return (username, len(res))
 
 
-def get_individual_album_covers_from_mosaic(link):
+def get_individual_album_covers_from_mosaic(link, img_path=None):
     """Take one mosaic album cover and save four individual covers from it
 
     This is the function to get individual pictures from a mosaic album cover
@@ -116,12 +118,13 @@ def get_individual_album_covers_from_mosaic(link):
         li_imgs.append(pre + imgs[i * 40 : (i + 1) * 40])
         pic = make_request(pre + imgs[i * 40 : (i + 1) * 40])
         if pic.status_code == 200:
-            with open(f"./images/mosaic_{i}.jpg", "wb") as f:
+            path = img_path if img_path else f"./images/mosaic_{i}.jpg"
+            with open(path, "wb") as f:
                 f.write(pic.content)
     return li_imgs
 
 
-def get_playlist_profile_pic(soup):
+def get_playlist_profile_pic(soup, img_path=None):
     """Fetches and saves the cover picture of a playlist
 
     Args:
@@ -137,12 +140,13 @@ def get_playlist_profile_pic(soup):
     playlist_name = name.text
     pic = make_request(res.get("src"))
     if pic.status_code == 200:
-        with open(f"./images/{playlist_name}_profile.jpg", "wb") as f:
+        path = img_path if img_path else f"./images/{playlist_name}_profile.jpg"
+        with open(path, "wb") as f:
             f.write(pic.content)
     return (playlist_name, res.get("src"))
 
 
-def process_artist_album(soup: BeautifulSoup):
+def process_artist_album(soup: BeautifulSoup, img_path=None):
     """Gets and saves the album covers given an artist
 
     Given the soup of the artist page, fetches all the album covers on that page and saves them locally.
@@ -185,7 +189,8 @@ def process_artist_album(soup: BeautifulSoup):
         # Download the image at the image URL and save it in an images folder
         pic = make_request(f"{albumImage}")
         if pic.status_code == 200:
-            with open(f"./images/{albumSlug}.jpg", "wb") as f:
+            path = img_path if img_path else f"./images/{albumSlug}.jpg"
+            with open(path, "wb") as f:
                 f.write(pic.content)
     return albumObj
 

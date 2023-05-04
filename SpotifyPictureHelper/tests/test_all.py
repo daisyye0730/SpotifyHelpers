@@ -7,6 +7,13 @@ import cv2
 import numpy as np
 
 
+def check_file_exists_and_delete(path):
+    f = open(path, "rb")
+    yield f
+    f.close()
+    os.remove(path)
+
+
 class TestSpotifyHelper:
     def test_make_request(self):
         response = spotify.make_request('https://open.spotify.com/user/rosycarina')
@@ -31,11 +38,30 @@ class TestSpotifyHelper:
                 'https://i.scdn.co/image/ab6775700000ee85c88b63d30ae5472bf4bee010',
             )
 
+    def test_process_user_profile_pic_with_path(self):
+        # fake HTML to create BeautifulSoup object
+        with open(os.path.join(os.sys.path[0], "fakeUser.html"), "r") as f:
+            fake_html = f.read()
+            soup = BeautifulSoup(fake_html, "html.parser")
+            assert spotify.process_user_profile_pic(soup, img_path='./images/test_img_user.jpg') == (
+                'rosycarina',
+                'https://i.scdn.co/image/ab6775700000ee85c88b63d30ae5472bf4bee010',
+            ) and check_file_exists_and_delete('./images/test_img_user.jpg')
+
     def test_get_public_playlists_albums(self):
         with open(os.path.join(os.sys.path[0], "fakeUser.html"), "r") as f:
             fake_html = f.read()
             soup = BeautifulSoup(fake_html, "html.parser")
             assert spotify.get_public_playlists_albums(soup) == ('rosycarina', 10)
+
+    def test_get_public_playlists_albums_with_path(self):
+        with open(os.path.join(os.sys.path[0], "fakeUser.html"), "r") as f:
+            fake_html = f.read()
+            soup = BeautifulSoup(fake_html, "html.parser")
+            assert spotify.get_public_playlists_albums(soup, img_path='./images/test_img_playlist.jpg') == (
+                'rosycarina',
+                10,
+            ) and check_file_exists_and_delete('./images/test_img_playlist.jpg')
 
     def test_get_individual_album_covers_from_mosaic(self):
         pre = "https://lite-images-i.scdn.co/image/"
@@ -43,6 +69,21 @@ class TestSpotifyHelper:
         assert spotify.get_individual_album_covers_from_mosaic(
             'https://mosaic.scdn.co/300/ab67616d00001e022a6ab83ec179747bc3b190dcab67616d00001e02335534788cbc39cfd23ee993ab67616d00001e02d6df3bccf3ec41ea2f76debcab67616d00001e02f0855ff71aa79ab842164fc6'
         ) == [pre + string[:40], pre + string[40:80], pre + string[80:120], pre + string[120:]]
+
+    def test_get_individual_album_covers_from_mosaic_with_path(self):
+        pre = "https://lite-images-i.scdn.co/image/"
+        string = "ab67616d00001e022a6ab83ec179747bc3b190dcab67616d00001e02335534788cbc39cfd23ee993ab67616d00001e02d6df3bccf3ec41ea2f76debcab67616d00001e02f0855ff71aa79ab842164fc6"
+        assert spotify.get_individual_album_covers_from_mosaic(
+            'https://mosaic.scdn.co/300/ab67616d00001e022a6ab83ec179747bc3b190dcab67616d00001e02335534788cbc39cfd23ee993ab67616d00001e02d6df3bccf3ec41ea2f76debcab67616d00001e02f0855ff71aa79ab842164fc6',
+            './images/test_mosaic.jpg',
+        ) == [
+            pre + string[:40],
+            pre + string[40:80],
+            pre + string[80:120],
+            pre + string[120:],
+        ] and check_file_exists_and_delete(
+            './images/test_mosaic.jpg'
+        )
 
     def test_get_individual_album_covers_from_mosaic_invalid_html(self):
         html = "skjfslf;ls"
@@ -68,6 +109,15 @@ class TestSpotifyHelper:
                 "https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb2f8dfdfeb85c3fc2d11b2ae2/4/en/default",
             )
 
+    def test_get_playlist_profile_pic_with_path(self):
+        with open(os.path.join(os.sys.path[0], "fakePlaylist.html"), "r") as f:
+            fake_html = f.read()
+            soup = BeautifulSoup(fake_html, "html.parser")
+            assert spotify.get_playlist_profile_pic(soup, img_path='./images/test_img_profile.jpg') == (
+                'Daily Mix 4',
+                "https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb2f8dfdfeb85c3fc2d11b2ae2/4/en/default",
+            ) and check_file_exists_and_delete('./images/test_img_profile.jpg')
+
     def test_process_artist_album(self):
         fake_html = ''
         with open(os.path.join(os.sys.path[0], "fakeArtist.html"), "r") as f:
@@ -79,6 +129,18 @@ class TestSpotifyHelper:
             'albumImageUrl': 'https://i.scdn.co/image/ab67616d00001e02e0b60c608586d88252b8fbc0',
             'albumSlug': 'midnights-(3am-edition)',
         }
+
+    def test_process_artist_album_with_path(self):
+        fake_html = ''
+        with open(os.path.join(os.sys.path[0], "fakeArtist.html"), "r") as f:
+            fake_html = f.read()
+        soup = BeautifulSoup(fake_html, "html.parser")
+        assert spotify.process_artist_album(soup, img_path='./images/test_img_slug.jpg')[0] == {
+            'albumName': 'Midnights (3am Edition)',
+            'albumLink': '/album/3lS1y25WAhcqJDATJK70Mq',
+            'albumImageUrl': 'https://i.scdn.co/image/ab67616d00001e02e0b60c608586d88252b8fbc0',
+            'albumSlug': 'midnights-(3am-edition)',
+        } and check_file_exists_and_delete('./images/test_img_slug.jpg')
 
     def test_filter_all_other_color(self):
         fake_path_to_img = "SpotifyPictureHelper/tests/blackWhite.png"
