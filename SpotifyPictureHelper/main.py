@@ -71,6 +71,7 @@ def get_public_playlists_albums(soup: BeautifulSoup, img_path=None):
 
     Args:
         soup (BeautifulSoup object): return value of get_soup
+        img_path (string): the path to save the image. If none, the program will save to images directory.
 
     Returns:
         tuple: returns username and the number of public playlists found
@@ -98,6 +99,7 @@ def get_individual_album_covers_from_mosaic(link, img_path=None):
 
     Args:
         link (string): The link of the mosaic album picture
+        img_path (string): the path to save the image. If none, the program will save to images directory.
 
     Returns:
         list: a list of individual album picture links
@@ -129,6 +131,7 @@ def get_playlist_profile_pic(soup, img_path=None):
 
     Args:
         soup (BeautifulSoup object): return value of get_soup
+        img_path (string): the path to save the image. If none, the program will save to images directory.
 
     Returns:
         tuple: the name of the playlist and the link of the image
@@ -153,6 +156,7 @@ def process_artist_album(soup: BeautifulSoup, img_path=None):
 
     Args:
         soup (BeautifulSoup object): Return value of get_soup
+        img_path (string): the path to save the image. If none, the program will save to images directory.
 
     Returns:
         list: a list of dictionaries, each dictionary contains the albumName, albumLink, albumImageUrl, and albumSlug
